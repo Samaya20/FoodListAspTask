@@ -1,0 +1,33 @@
+﻿@model FirstAspTask.Models.FoodViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+</head>
+<body>
+
+    <div class="accordion" id="accordionExample">
+            @foreach (var item in Model.HotMeals)
+            {
+                <div class="card">
+                    <div class="card-header" id="heading_@item.Id">
+                        <h2 class="mb-0">
+                            <button class="btn btn-outline-light text-dark" type="button" data-toggle="collapse" data-target="#collapse_@item.Id" aria-expanded="true" aria-controls="collapse_@item.Id">
+                                @item.Id . @item.Name
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapse_@item.Id" class="collapse @(item.Id == 1 ? "show" : "")" aria-labelledby="heading_@item.Id" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>Category : @item.Category</p>
+                            <p>Price : @item.Price $</p>
+                            <p>Is Alcholic : @item.Cuisine</p>
+                        </div>
+                    </div>
+                </div>
+            }
+    </div>
+</body>
+</html>
